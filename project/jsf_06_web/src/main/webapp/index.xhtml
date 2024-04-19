@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/page-template.xhtml">
+	
+
+
+	<ui:define name="content" >
+		<div class="ui-g">
+    		<div class="ui-g-6">
+    		
+    <p:tabView>
+        <p:tab title="Witaj!">
+            <h:panelGrid  columns="2" cellpadding="10">
+                <p:graphicImage name="img/repairlogo.png" library="template" />
+                <h:outputText styleClass="tabstext"  escape="false" value="&lt;br /&gt;&lt;b /&gt;Witaj w JD Service!&lt;/b /&gt;&lt;br /&gt; Twoim zaufanym partnerze w dziedzinie obsługi i naprawy sprzętu komputerowego! &lt;br /&gt;&lt;br /&gt;
+						Tutaj profesjonalizm, doświadczenie i pasja do technologii łączą się, by zapewnić Ci kompleksowe wsparcie, niezależnie czy potrzebujesz szybkiej naprawy, konserwacji, czy porady dotyczącej wydajności." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Efekty naszej pracy">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:imageCompare leftImage="/resources/template/img/broken.jpg" 
+                rightImage="/resources/template/img/fixed.jpg" 
+                width="450" height="435"/>
+                <h:outputText styleClass="tabstext"  escape="false" value="&lt;br /&gt;&lt;b /&gt;Efekty gwarantowane!&lt;/b /&gt;&lt;br /&gt;Dzięki zespołowi wykwalifikowanych specjalistów oraz bogatemu doświadczeniu w obszarze naprawy i konserwacji sprzętu komputerowego, firma gwarantuje szybką i skuteczną obsługę klientów." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Kontakt">
+            <h:panelGrid columns="2" cellpadding="70">
+                <p:graphicImage name="img/map.png" library="template" height="250px"/>
+                <h:outputText styleClass="tabstext" escape="false" value="Zadzwoń do nas:&lt;br /&gt;  
+                &lt;b /&gt;123 456 789 &lt;/b /&gt; &lt;br /&gt;&lt;br /&gt;
+                Napisz wiadomość:&lt;br /&gt; 
+				&lt;b /&gt;jdservice@gmail.com&lt;/b /&gt; &lt;br /&gt;&lt;br /&gt;
+                Nasza lokalizacja:&lt;br /&gt;  
+				&lt;b /&gt;Wodzisław Śląski&lt;br /&gt;
+				ul. Wodzisławska 1 
+                
+                
+                " />
+            </h:panelGrid>
+        </p:tab>
+    </p:tabView>
+
+			</div>
+    		<div class="ui-g-6">
+    			
+				<h:form styleClass="loginform">
+				<p:panel id="panel" styleClass="loginpanel" header="Logowanie do systemu">
+					<p:messages id="msgs" />
+					
+					<h:panelGrid styleClass="logingrid" columns="2" cellpadding="5">
+						<p:outputLabel for="login" styleClass="loginout" value="login:" />
+						<p:inputText styleClass="loginin" id="login" value="#{personListBB.surname}" required="true" requiredMessage="Podaj login!"/>
+						<p:outputLabel for="pass" styleClass="loginout" value="hasło:" />
+						<p:password styleClass="loginin" id="pass" value="#{personListBB.surname}" required="true" requiredMessage="Podaj hasło!"/>
+					</h:panelGrid>
+					<p:commandButton styleClass="loginbtn" value="Zaloguj" update="panel" action="#{login.doLogin}" />
+        			<p:commandButton styleClass="loginbtn" value="Nie masz konta? Zarejestruj się!" action="#{register.doRegister}" immediate="true" />
+					</p:panel>
+				</h:form>
+				
+    		</div>
+		</div>
+	
+	</ui:define>
+
+</ui:composition>
+</html>

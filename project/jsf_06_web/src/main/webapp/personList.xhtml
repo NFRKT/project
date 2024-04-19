@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/page-template.xhtml">
+
+	<ui:define name="pageContent">
+
+	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+		style="margin-bottom: 1em;">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="nazwisko:" />
+				<p:inputText value="#{reportListBB.surname}" />
+				<p:commandButton value="Szukaj" update="form-table" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+
+
+
+	<h:form id="form-table" style="margin-bottom:1em;">
+
+		<p:commandButton value="Dodaj nową osobę"
+			action="#{reportListBB.newReport()}" style="margin-bottom:1em;" />
+			
+
+		<p:dataTable value="#{reportListBB.list}" var="r">
+
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="imię" />
+				</f:facet>
+				<h:outputText value="#{r.name}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="nazwisko" />
+				</f:facet>
+				<h:outputText value="#{r.surname}" />
+			</p:column>
+
+			<p:column priority="4">
+				<f:facet name="header">
+					<h:outputText value="data reportu." />
+				</f:facet>
+				<h:outputText value="#{r.dateOfReport}">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:outputText>
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="phone" />
+				</f:facet>
+				<h:outputText value="#{r.phone}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="model" />
+				</f:facet>
+				<h:outputText value="#{r.model}" />
+			</p:column>
+			
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="opcje" />
+				</f:facet>
+
+				<p:commandButton value="Edytuj"
+					action="#{reportListBB.editReport(r)}" />
+
+				<p:commandButton value="Usuń"
+					action="#{reportListBB.deleteReport(r)}" update="@form" />
+
+
+			</p:column>
+
+		</p:dataTable>
+		
+	</h:form>
+	
+</ui:define>
+
+</ui:composition>
+</html>
